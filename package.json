@@ -1,6 +1,9 @@
 {
   "name": "pnote",
   "version": "1.0.0",
+  "engines":{
+   "node":"v8.10.0"
+  },
   "description": "simple note taking app",
   "main": "server.js",
   "scripts": {

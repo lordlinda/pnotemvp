@@ -22,6 +22,9 @@ app.use(morgan('dev'))
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended:false}))
 
+//serve static files
+app.use(express.static('frontend/build'))
+
 //Routes
 app.use('/notes',require('./routes/notes.js'))
 app.use('/notebooks',require('./routes/notebooks.js'))
