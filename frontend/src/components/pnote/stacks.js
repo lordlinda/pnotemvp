@@ -91,7 +91,7 @@ class Stacks extends Component{
            const stack={
             name:this.state.name
            }
-           console.log(this.props)
+           //console.log(this.props)
           await this.props.createStack(stack)
      }
 

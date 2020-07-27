@@ -3,6 +3,7 @@ const  morgan = require('morgan')
 const bodyParser = require('body-parser')
 const cors =require('cors')
 const mongoose = require('mongoose')
+const path=require('path')
 
 //connect to mongodb
 mongoose.connect('mongodb+srv://lord:phaneroo@5@cluster0.nuqxe.mongodb.net/pnote?retryWrites=true&w=majority',{
@@ -24,6 +25,10 @@ app.use(bodyParser.urlencoded({extended:false}))
 
 //serve static files
 app.use(express.static('frontend/build'))
+//you need this for the routes to work
+app.get('*', (req, res) => {
+	res.sendFile(path.join(__dirname, 'frontend/build', 'index.html'));
+});
 
 //Routes
 app.use('/notes',require('./routes/notes.js'))
