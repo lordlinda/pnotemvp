@@ -6,9 +6,10 @@ const mongoose = require('mongoose')
 const path=require('path')
 const dotenv = require('dotenv')
 
+dotenv.config()
 
 //connect to mongodb
-mongoose.connect('mongodb+srv://lord:phaneroo@5@cluster0.nuqxe.mongodb.net/pnote?retryWrites=true&w=majority',{
+mongoose.connect(process.env.MONGODB_URI || 'mongodb+srv://lord:phaneroo@5@cluster0.nuqxe.mongodb.net/pnote?retryWrites=true&w=majority',{
 useNewUrlParser: true ,
 useUnifiedTopology: true
 })
@@ -24,7 +25,6 @@ app.use(cors())
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended:false}))
 
-dotenv.config();
 //this allows us to read the .env file
 //we are running this middleware because  in
 //production we want some middleware to run
