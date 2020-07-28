@@ -37,15 +37,8 @@ if(process.env.NODE_ENV === "development"){
 	//console.log('morgan')
 	app.use(morgan('dev'))
 
-}else{
-  //serve static files
-app.use(express.static('frontend/build'))
-//you need this for the routes to work
-app.get('*', (req, res) => {
-	res.sendFile(path.join(__dirname, 'frontend/build', 'index.html'));
-});
-
 }
+
 
 
 //Routes
@@ -60,6 +53,22 @@ app.use((err,req,res,next)=>{
 	res.status(500).json({error:err.message})
 	next();
 })
+
+//these need to be at the bottom
+if(process.env.NODE_ENV === "production"){
+//serve static files
+  app.use(express.static(path.join(__dirname, "frontend", "build")))
+
+//you need this for the routes to work
+//Right before app.listen()
+//it is a catch call route handler,it is  in charge of sending the  main index.html file
+//back to the client if it didnt receive a request it recognised otherwise
+app.get('*', (req, res) => {
+	res.sendFile(path.join(__dirname, 'frontend/build', 'index.html'));
+});
+
+}
+
 //port
 const Port =process.env.PORT || 5000
 //listen for server

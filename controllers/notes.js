@@ -12,7 +12,7 @@ module.exports ={
      	//console.log(req.user)
      	Note.find({user:req.user.id})
      	.then(notes=>{
-     		console.log(notes)
+     		//console.log(notes)
      		res.status(200).json({notes:notes})
      	}).catch(err=>{
      		res.status(500).json({error:err.message})
