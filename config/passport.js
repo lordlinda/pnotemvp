@@ -118,7 +118,7 @@ const {ExtractJwt} = require('passport-jwt')
 passport.use(new JwtStrategy({
 //we use authorization with a lowercase a not A
 	jwtFromRequest:ExtractJwt.fromHeader('authorization'),
-	secretOrKey:JWT_SECRET,
+	secretOrKey:JWT_SECRET || process.env.SECRET,
 },(payload,done)=>{
 	//console.log('here')
 	//we return the user
