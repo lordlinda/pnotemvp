@@ -6,7 +6,7 @@ import {GET_STACKS,DELETE_STACK,CREATE_STACK,GET_STACK,EDIT_STACK,STACK_LIST} fr
 export const getStacks=()=>{
   return async dispatch=>{
         await axios
-        .get('http://localhost:5000/stacks')
+        .get('/stacks')
         .then(res=>{
           //console.log(res.data)
           dispatch({
@@ -26,7 +26,7 @@ export const getStack=(id)=>{
 //  console.log(id)
   return async dispatch=>{
         await axios
-        .get(`http://localhost:5000/stacks/${id}`)
+        .get(`/stacks/${id}`)
         .then(res=>{
           //console.log(res.data)
           dispatch({
@@ -62,7 +62,7 @@ export const createStack=(stack)=>{
 export const deleteStack=(id)=>{
         return async dispatch=>{
                 await  axios
-                .delete(`http://localhost:5000/stacks/${id}`)
+                .delete(`/stacks/${id}`)
                 .then(res=>{
                // console.log(res.data)
                   dispatch({
@@ -81,7 +81,7 @@ export const editStack=(id,stack)=>{
        // console.log(id,note)
         return async dispatch=>{
                 await  axios
-                .patch(`http://localhost:5000/stacks/${id}`,stack)
+                .patch(`/stacks/${id}`,stack)
                 .then(res=>{
                   //console.log(res.data)
                   dispatch({
@@ -99,7 +99,7 @@ export const editStack=(id,stack)=>{
 export const getStackList=()=>{
   return async dispatch=>{
     await  axios
-    .get('http://localhost:5000/stacks')
+    .get('/stacks')
     .then(res=>{
       console.log(res.data)
       dispatch({

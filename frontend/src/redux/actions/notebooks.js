@@ -6,7 +6,7 @@ import {GET_NOTEBOOKS,DELETE_NOTEBOOK,CREATE_NOTEBOOK,GET_NOTEBOOK,EDIT_NOTEBOOK
 export const getNotebooks=()=>{
 	return async dispatch=>{
         await axios
-        .get('http://localhost:5000/notebooks')
+        .get('/notebooks')
         .then(res=>{
         	//console.log(res.data)
         	dispatch({
@@ -25,7 +25,7 @@ export const getNotebooks=()=>{
 export const getNotebook=(id)=>{
 	return async dispatch=>{
         await axios
-        .get(`http://localhost:5000/notebooks/${id}`)
+        .get(`/notebooks/${id}`)
         .then(res=>{
         	//console.log(res.data)
         	dispatch({
@@ -45,7 +45,7 @@ export const getNotebook=(id)=>{
 export const createNotebook=(notebook)=>{
         return async dispatch=>{
                 await  axios
-                .post('http://localhost:5000/notebooks',notebook)
+                .post('/notebooks',notebook)
                 .then(res=>{
                   //console.log(res.data)
                   dispatch({
@@ -63,7 +63,7 @@ export const createNotebook=(notebook)=>{
 export const deleteNotebook=(id)=>{
         return async dispatch=>{
                 await  axios
-                .delete(`http://localhost:5000/notebooks/${id}`)
+                .delete(`/notebooks/${id}`)
                 .then(res=>{
                 // console.log(res.data)
                   dispatch({
@@ -82,7 +82,7 @@ export const editNotebook=(id,notebook)=>{
        // console.log(id,note)
         return async dispatch=>{
                 await  axios
-                .patch(`http://localhost:5000/notebooks/${id}`,notebook)
+                .patch(`/notebooks/${id}`,notebook)
                 .then(res=>{
                   console.log(res.data)
                   dispatch({
@@ -100,7 +100,7 @@ export const editNotebook=(id,notebook)=>{
 export const getStackList=()=>{
   return async dispatch=>{
     await  axios
-    .get('http://localhost:5000/stacks')
+    .get('/stacks')
     .then(res=>{
       //console.log(res.data)
       dispatch({
@@ -119,7 +119,7 @@ export const addToStack=(id,stack)=>{
   //console.log('add to stack')
   return async dispatch=>{
     await  axios
-    .patch(`http://localhost:5000/notebooks/notebook/${id}`,{stack:stack})
+    .patch(`/notebooks/notebook/${id}`,{stack:stack})
     .then(res=>{
       dispatch({
         type:ADDTOSTACK,
@@ -140,7 +140,7 @@ export const noteInNotebook=(id,note)=>{
  // console.log({notebook:notebook})
   return async dispatch=>{
     await  axios
-    .patch(`http://localhost:5000/notebooks/note/notebook/${id}`,note)
+    .patch(`/notebooks/note/notebook/${id}`,note)
     .then(res=>{
       console.log(res.data)
     }).catch(err=>{
@@ -157,7 +157,7 @@ export const noteInNotebook=(id,note)=>{
 export const getNotes=()=>{
   return async dispatch=>{
         await axios
-        .get('http://localhost:5000/notes')
+        .get('/notes')
         .then(res=>{
           //console.log(res.data.notes)
           dispatch({

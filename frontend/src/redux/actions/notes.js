@@ -7,7 +7,7 @@ import {GET_NOTE,DELETE_NOTE,GET_NOTES,EDIT_NOTE,CREATE_NOTE,NOTEBOOK_LIST
 export const getNotes=()=>{
 	return async dispatch=>{
         await axios
-        .get('http://localhost:5000/notes')
+        .get('/notes')
         .then(res=>{
         	//console.log(res.data.notes)
         	dispatch({
@@ -26,7 +26,7 @@ export const getNotes=()=>{
 export const getNote=(id)=>{
 	return async dispatch=>{
         await axios
-        .get(`http://localhost:5000/notes/${id}`)
+        .get(`/notes/${id}`)
         .then(res=>{
         	//console.log(res.data)
         	dispatch({
@@ -46,7 +46,7 @@ export const getNote=(id)=>{
 export const createNote=(note)=>{
         return async dispatch=>{
                 await  axios
-                .post('http://localhost:5000/notes',note)
+                .post('/notes',note)
                 .then(res=>{
                   //console.log(res.data)
                   dispatch({
@@ -64,7 +64,7 @@ export const createNote=(note)=>{
 export const deleteNote=(id)=>{
         return async dispatch=>{
                 await  axios
-                .delete(`http://localhost:5000/notes/${id}`)
+                .delete(`/notes/${id}`)
                 .then(res=>{
                  // console.log(res.data)
                   dispatch({
@@ -83,7 +83,7 @@ export const editNote=(id,note)=>{
        // console.log(id,note)
         return async dispatch=>{
                 await  axios
-                .patch(`http://localhost:5000/notes/${id}`,note)
+                .patch(`/notes/${id}`,note)
                 .then(res=>{
                   //console.log(res.data)
                   dispatch({
@@ -100,7 +100,7 @@ export const editNote=(id,note)=>{
 export const getNotebookList=()=>{
   return async dispatch=>{
     await  axios
-    .get('http://localhost:5000/notebooks')
+    .get('/notebooks')
     .then(res=>{
       //console.log(res.data)
       dispatch({
@@ -117,7 +117,7 @@ export const addToNotebook=(id,notebook)=>{
  // console.log({notebook:notebook})
   return async dispatch=>{
     await  axios
-    .patch(`http://localhost:5000/notes/note/${id}`,{notebook:notebook})
+    .patch(`/notes/note/${id}`,{notebook:notebook})
     .then(res=>{
       //console.log(res.data)
       dispatch({

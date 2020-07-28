@@ -10,7 +10,7 @@ import axios from 'axios'
 export const signUp=(user)=>{
 	return async dispatch=>{
 		await axios
-				.post('http://localhost:5000/users/signup',user)
+				.post('/users/signup',user)
 				.then(res=>{
 					//console.log(res.data)
 					dispatch({
@@ -32,7 +32,7 @@ export const signUp=(user)=>{
 export const googleAuth=(token)=>{
 	return async dispatch=>{
 		await axios
-		         .post('http://localhost:5000/users/oauth/google',{access_token:token})
+		         .post('/users/oauth/google',{access_token:token})
 		         .then(res=>{
                    //console.log(res.data)
                    dispatch({
@@ -49,7 +49,7 @@ export const googleAuth=(token)=>{
 export const signIn=(user)=>{
 	return async dispatch=>{
 		await axios
-		         .post('http://localhost:5000/users/signin',user)
+		         .post('/users/signin',user)
 		         .then(res=>{
                    //console.log(res.data)
                    dispatch({
