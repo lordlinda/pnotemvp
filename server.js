@@ -41,9 +41,9 @@ if(process.env.NODE_ENV === "development"){
   //serve static files
 app.use(express.static('frontend/build'))
 //you need this for the routes to work
-app.get('*', (req, res) => {
-	res.sendFile(path.join(__dirname, 'frontend/build', 'index.html'));
-});
+//app.get('*', (req, res) => {
+	//res.sendFile(path.join(__dirname, 'frontend/build', 'index.html'));
+//});
 
 }
 
