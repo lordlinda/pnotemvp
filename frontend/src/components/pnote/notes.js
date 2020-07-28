@@ -66,7 +66,7 @@ class Notes extends Component{
     }
 
 	render(){
-		//console.log(this.props.notes)
+		console.log(this.props.notes)
 		const {classes} =this.props
 		return (
 			<div>
