@@ -9,7 +9,7 @@ export const getNotes=()=>{
         await axios
         .get('http://localhost:5000/notes')
         .then(res=>{
-        	//console.log(res.data.notes)
+        	console.log(res.data.notes)
         	dispatch({
         		type:GET_NOTES,
         		payload:res.data.notes

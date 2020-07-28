@@ -157,7 +157,6 @@ class Stacks extends Component{
             fullWidth
           />
         </DialogContent>
-        
         <DialogActions>
       {/*the button you see here is what allows us to create a stack*/}
           <Button

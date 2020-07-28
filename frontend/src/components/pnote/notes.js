@@ -60,13 +60,13 @@ class Notes extends Component{
  //this deletes a note
    async deleteNote(id){
 
-    	//console.log(id)
+    	console.log(id)
     	await this.props.deleteNote(id)
 
     }
 
 	render(){
-		//console.log(this.props.notes)
+		console.log(this.props.notes)
 		const {classes} =this.props
 		return (
 			<div>

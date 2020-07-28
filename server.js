@@ -4,6 +4,8 @@ const bodyParser = require('body-parser')
 const cors =require('cors')
 const mongoose = require('mongoose')
 const path=require('path')
+const dotenv = require('dotenv')
+
 
 //connect to mongodb
 mongoose.connect('mongodb+srv://lord:phaneroo@5@cluster0.nuqxe.mongodb.net/pnote?retryWrites=true&w=majority',{
@@ -19,16 +21,32 @@ const app =express();
 //middlewares
 //this limits the cors errors while connecting to the front end
 app.use(cors())
-app.use(morgan('dev'))
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended:false}))
 
-//serve static files
+dotenv.config();
+//this allows us to read the .env file
+//we are running this middleware because  in
+//production we want some middleware to run
+//e.g in production we want to serve our frontend from the build file
+////which is not the case for development
+//and in development some other midleware to run
+//in development we want morgan to run
+//we only want it to go to production during development or it wont work locally
+if(process.env.NODE_ENV === "development"){
+	//console.log('morgan')
+	app.use(morgan('dev'))
+
+}else{
+  //serve static files
 app.use(express.static('frontend/build'))
 //you need this for the routes to work
 app.get('*', (req, res) => {
 	res.sendFile(path.join(__dirname, 'frontend/build', 'index.html'));
 });
+
+}
+
 
 //Routes
 app.use('/notes',require('./routes/notes.js'))
