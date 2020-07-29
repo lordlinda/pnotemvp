@@ -42,7 +42,7 @@ class NotebookList extends Component {
   async componentDidUpdate(){
     const id =this.props.match.params.id
     const notebook=this.state.notebook
-
+//console.log(id)
    if(notebook !== ""){
     //console.log('notebook')
     await this.props.addToNotebook(id,notebook)
@@ -57,7 +57,7 @@ class NotebookList extends Component {
   render(){
    const {classes} =this.props
   // console.log(this.state)
-  console.log(this.props.error)
+ // console.log(this.props.error)
     return (
       <div className={classes.root}>
       {

@@ -18,6 +18,8 @@ export const signUp=(user)=>{
 						payload:res.data.token
 					})
 					localStorage.setItem('jwt',res.data.token)
+					axios.defaults.headers.common["Authorization"]=res.data.token
+
 				}).catch(err=>{
                    //console.log(err)
                    dispatch({
@@ -40,6 +42,8 @@ export const googleAuth=(token)=>{
 						payload:res.data.token
 					})
 					localStorage.setItem('jwt',res.data.token)
+					axios.defaults.headers.common["Authorization"]=res.data.token
+
 		         }).catch(err=>{
 		         	console.log(err)
 		         })
@@ -57,6 +61,8 @@ export const signIn=(user)=>{
 						payload:res.data.token
 					})
 					localStorage.setItem('jwt',res.data.token)
+					axios.defaults.headers.common["Authorization"]=res.data.token
+
 		         }).catch(err=>{
 		         	//console.log(err)
 		         	dispatch({
@@ -70,6 +76,7 @@ export const signIn=(user)=>{
 export const signOut=()=>{
 	return dispatch=>{
 		localStorage.removeItem('jwt')
+		axios.defaults.headers.common["Authorization"]=""
 		dispatch({
           type:SIGN_OUT,
           payload:''
