@@ -1,16 +1,16 @@
 const { validationResult } = require('express-validator');
 const jwt = require('jsonwebtoken')
-const { JWT_SECRET } = require('../config/index.js')
 
 //User model
 const User = require('../models/User.js')
+//console.log(process.env.SECRET)
 //the function takes in a user and returns ajwt token
 signedToken =(user) =>{
   //we just return the token
   return jwt.sign({
   sub:user._id,
-  //exp:Math.floor(Date.now() / 1000) + (60 * 60)
-  },process.env.SECRET || JWT_SECRET)
+  exp:Math.floor(Date.now() / 1000) + (60 * 60)
+  },process.env.SECRET)
 }
 module.exports={
   //@route                  /users/signup

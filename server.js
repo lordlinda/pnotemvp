@@ -9,7 +9,7 @@ const dotenv = require('dotenv')
 dotenv.config()
 
 //connect to mongodb
-mongoose.connect(process.env.MONGODB_URI || 'mongodb+srv://lord:phaneroo@5@cluster0.nuqxe.mongodb.net/pnote?retryWrites=true&w=majority',{
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/pnote",{
 useNewUrlParser: true ,
 useUnifiedTopology: true
 })

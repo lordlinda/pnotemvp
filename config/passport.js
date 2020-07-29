@@ -12,7 +12,6 @@ const bcrypt =require('bcryptjs')
 
 
 const User =require('../models/User.js')
-const {CLIENT_SECRET,CLIENT_ID,JWT_SECRET} = require('../config/index.js')
 
 
 //LOCAL STRATEGY
@@ -53,17 +52,16 @@ passport.use(new LocalStrategy(
               //if user has been found and password match we return user
           return done(null,user)
           }
-       
        })
 
   })
 
-}));
-
+}))
+//console.log(process.env.SECRET,process.env.CLIENT_ID,process.env.CLIENT_ID)
 // =======GOOGLE STRATEGY========
 passport.use(new GoogleTokenStrategy({
-    clientID: CLIENT_ID,
-    clientSecret:CLIENT_SECRET
+    clientID:process.env.CLIENT_ID ,
+    clientSecret:process.env.CLIENT_SECRET 
   },
   function(accessToken, refreshToken, profile, done) {
      //console.log(profile)
@@ -118,7 +116,7 @@ const {ExtractJwt} = require('passport-jwt')
 passport.use(new JwtStrategy({
 //we use authorization with a lowercase a not A
 	jwtFromRequest:ExtractJwt.fromHeader('authorization'),
-	secretOrKey:JWT_SECRET || process.env.SECRET,
+	secretOrKey:process.env.SECRET,
 },(payload,done)=>{
 	//console.log('here')
 	//we return the user
