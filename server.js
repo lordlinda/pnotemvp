@@ -69,7 +69,7 @@ if(process.env.NODE_ENV === "production"){
 //Right before app.listen()
 //it is a catch call route handler,it is  in charge of sending the  main index.html file
 //back to the client if it didnt receive a request it recognised otherwise
-app.get('/', (req, res) => {
+app.get('*', (req, res) => {
 	res.sendFile(path.join(__dirname, 'frontend/build', 'index.html'));
 });
 
