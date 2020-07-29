@@ -12,7 +12,7 @@ const NotebookControllers = require('../controllers/notebooks.js')
  //@route                   /notebooks
  //@description            get all notebooks
  //@access                  Private
-  router.get('/',passport.authenticate('jwt',{session:false}),NotebookControllers.allNotebooks)
+  router.get('/',NotebookControllers.allNotebooks)
 
 //@route                   /notebooks
 //@description            creating new notebook
